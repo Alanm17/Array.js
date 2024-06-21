@@ -74,3 +74,26 @@ const currencies = new Map([
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
+//======================== destrucitng for practice
+let arr = ['a', 'b', 'r', 'b', 'g'];
+// const [a, b, ...r] = arr;
+// console.log(a, b, r);
+// const [...jake] = [a, b, r];
+// console.log(jake);
+// console.log(a, jake);
+// jake[1] = 's';
+
+// console.log(arr);
+// console.log(jake);
+//=============================================================== SPLICE ARRAY METHOD
+console.log(arr.slice(2, 3));
+console.log(arr);
+console.log(arr.splice(2, 2));
+console.log(arr.splice(1));
+
+console.log(arr);
+let arr2 = ['a', 'b', 'r', 'b', 'g'];
+console.log(arr2.reverse());
+console.log(arr2.reverse(2, 3));
+
+console.log(arr2.join(' '));
