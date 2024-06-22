@@ -136,5 +136,5 @@ currencies.forEach(function (value, key, [...map]) {
 const newCurrencies = new Set(['USD', 'GBP', 'UZS', 'UZS']);
 console.log(newCurrencies);
 newCurrencies.forEach(function (value, key) {
-  console.log(`${key}: ${value}`);
+  console.log(`${key}: ${value}`); // there are no any keys in this Array so forEach method takes the value itself as key and logs it javaScript made this to avoid any confusions
 });
