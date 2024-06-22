@@ -65,11 +65,11 @@ const inputClosePin = document.querySelector('.form__input--pin');
 /////////////////////////////////////////////////
 // LECTURES
 
-const currencies = new Map([
-  ['USD', 'United States dollar'],
-  ['EUR', 'Euro'],
-  ['GBP', 'Pound sterling'],
-]);
+// const currencies = new Map([
+//   ['USD', 'United States dollar'],
+//   ['EUR', 'Euro'],
+//   ['GBP', 'Pound sterling'],
+// ]);
 
 // const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
@@ -98,28 +98,43 @@ let arr = ['a', 'b', 'r', 'b', 'g'];
 
 // console.log(arr2.join(' '));
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
-for (const [index, value] of movements.entries()) {
-  value > 0
-    ? console.log(`The move ${index + 1} You have deposited ${value}`)
-    : console.log(
-        `The move ${index + 1} You have withdrawn ${Math.abs(value)}`
-      );
-}
+// for (const [index, value] of movements.entries()) {
+//   value > 0
+//     ? console.log(`The move ${index + 1} You have deposited ${value}`)
+//     : console.log(
+//         `The move ${index + 1} You have withdrawn ${Math.abs(value)}`
+//       );
+// }
 
-console.log(
-  'for each method!================================================='
-);
+// console.log(
+//   'for each method!================================================='
+// );
 
-movements.forEach(function (value, index, array) {
-  value > 0
-    ? console.log(
-        `The move ${index + 1} You have deposited ${value} with ${array}`
-      )
-    : console.log(
-        `The move ${index + 1} You have withdrawn ${Math.abs(
-          value
-        )} with ${array}`
-      );
+// movements.forEach(function (value, index, array) {
+//   value > 0
+//     ? console.log(
+//         `The move ${index + 1} You have deposited ${value} with ${array}`
+//       )
+//     : console.log(
+//         `The move ${index + 1} You have withdrawn ${Math.abs(
+//           value
+//         )} with ${array}`
+//       );
+// });
+
+const currencies = new Map([
+  ['USD', 'United States dollar'],
+  ['EUR', 'Euro'],
+  ['GBP', 'Pound sterling'],
+]);
+
+currencies.forEach(function (value, key, [...map]) {
+  console.log(`${key}: ${value} ${map}`);
+});
+const newCurrencies = new Set(['USD', 'GBP', 'UZS', 'UZS']);
+console.log(newCurrencies);
+newCurrencies.forEach(function (value, key) {
+  console.log(`${key}: ${value}`);
 });
