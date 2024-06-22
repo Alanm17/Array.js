@@ -71,7 +71,7 @@ const currencies = new Map([
   ['GBP', 'Pound sterling'],
 ]);
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 //======================== destrucitng for practice
@@ -86,14 +86,40 @@ let arr = ['a', 'b', 'r', 'b', 'g'];
 // console.log(arr);
 // console.log(jake);
 //=============================================================== SPLICE ARRAY METHOD
-console.log(arr.slice(2, 3));
-console.log(arr);
-console.log(arr.splice(2, 2));
-console.log(arr.splice(1));
+// console.log(arr.slice(2, 3));
+// console.log(arr);
+// console.log(arr.splice(2, 2));
+// console.log(arr.splice(1));
 
-console.log(arr);
-let arr2 = ['a', 'b', 'r', 'b', 'g'];
-console.log(arr2.reverse());
-console.log(arr2.reverse(2, 3));
+// console.log(arr);
+// let arr2 = ['a', 'b', 'r', 'b', 'g'];
+// console.log(arr2.reverse());
+// console.log(arr2.reverse(2, 3));
 
-console.log(arr2.join(' '));
+// console.log(arr2.join(' '));
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+for (const [index, value] of movements.entries()) {
+  value > 0
+    ? console.log(`The move ${index + 1} You have deposited ${value}`)
+    : console.log(
+        `The move ${index + 1} You have withdrawn ${Math.abs(value)}`
+      );
+}
+
+console.log(
+  'for each method!================================================='
+);
+
+movements.forEach(function (value, index, array) {
+  value > 0
+    ? console.log(
+        `The move ${index + 1} You have deposited ${value} with ${array}`
+      )
+    : console.log(
+        `The move ${index + 1} You have withdrawn ${Math.abs(
+          value
+        )} with ${array}`
+      );
+});
