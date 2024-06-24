@@ -76,7 +76,8 @@ const displayMove = function (movements) {
 displayMove(account1.movements);
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
-
+// .innerHTML = innerHTML is an HTML element property that has two uses for web developers: 1) You can use it to get the internal HTML content of any HTML element as an HTML string. 2) You can also use it to set or change elements' innerHTML content
+// .insertAdjacentHTML() method provides an efficient way to manipulate web page structure without replacing all the content of an element. It's also the go-to method for inserting HTML elements or text elements into a specific position.
 // LECTURES
 
 // const currencies = new Map([
