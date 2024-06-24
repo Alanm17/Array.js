@@ -61,8 +61,22 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
+const displayMove = function (movements) {
+  containerMovements.innerHTML = '';
+  movements.forEach(function (mov, i) {
+    const type = mov > 0 ? 'deposit' : 'withdrawal';
+    const html = `
+    <div class="movements__row">
+    <div class="movements__type movements__type--${type}">${i + 1} ${type}</div>
+    <div class="movements__value">${Math.abs(mov)}€</div>
+    </div>`;
+    containerMovements.insertAdjacentHTML('afterbegin', html);
+  });
+};
+displayMove(account1.movements);
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
+
 // LECTURES
 
 // const currencies = new Map([
@@ -124,17 +138,17 @@ let arr = ['a', 'b', 'r', 'b', 'g'];
 //       );
 // });
 
-const currencies = new Map([
-  ['USD', 'United States dollar'],
-  ['EUR', 'Euro'],
-  ['GBP', 'Pound sterling'],
-]);
+// const currencies = new Map([
+//   ['USD', 'United States dollar'],
+//   ['EUR', 'Euro'],
+//   ['GBP', 'Pound sterling'],
+// ]);
 
-currencies.forEach(function (value, key, [...map]) {
-  console.log(`${key}: ${value} ${map}`);
-});
-const newCurrencies = new Set(['USD', 'GBP', 'UZS', 'UZS']);
-console.log(newCurrencies);
-newCurrencies.forEach(function (value, key) {
-  console.log(`${key}: ${value}`); // there are no any keys in this Array so forEach method takes the value itself as key and logs it javaScript made this to avoid any confusions
-});
+// currencies.forEach(function (value, key, [...map]) {
+//   console.log(`${key}: ${value} ${map}`);
+// });
+// const newCurrencies = new Set(['USD', 'GBP', 'UZS', 'UZS']);
+// console.log(newCurrencies);
+// newCurrencies.forEach(function (value, key) {
+//   console.log(`${key}: ${value}`); // there are no any keys in this Array so forEach method takes the value itself as key and logs it javaScript made this to avoid any confusions
+// });
