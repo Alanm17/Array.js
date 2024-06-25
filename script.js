@@ -153,3 +153,29 @@ let arr = ['a', 'b', 'r', 'b', 'g'];
 // newCurrencies.forEach(function (value, key) {
 //   console.log(`${key}: ${value}`); // there are no any keys in this Array so forEach method takes the value itself as key and logs it javaScript made this to avoid any confusions
 // });
+
+// challange
+// function for age seppereation with forEach() method
+// using shallow copying using slice() method to remove 2 ages from julia
+// create one array with full corrected info of kate and julia
+// For each remaining dog,log to the console whether it's an adult("Dog number 1 is an adult,and is 5 years old"') or a puppy ("Dog number 2 is still a puppy"）
+// Julia = [3, 5, 2, 12, 71] , kate's data [4,2,15,8,3]
+// julia = [9,16,6,8,3], kate's [10,5,6,1,4]
+const me = [3, 2, 1, 8];
+const createOne = function (julie, kate) {
+  const shallowCopy = julie.slice();
+  shallowCopy.splice(0, 1);
+  shallowCopy.splice(-2);
+  console.log(shallowCopy);
+  const fullData = shallowCopy.concat(kate);
+  fullData.forEach(function (value, i) {
+    value > 3
+      ? console.log(`Dog number ${i + 1} is an adult,and is ${value} years old`)
+      : console.log(`Dog number ${i + 1} is still a puppy`);
+  });
+};
+
+const julie = [3, 5, 2, 12, 71];
+const kate = [4, 2, 15, 8, 3];
+
+createOne(julie, kate);
