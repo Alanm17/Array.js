@@ -180,23 +180,44 @@ let arr = ['a', 'b', 'r', 'b', 'g'];
 
 // createOne(julie, kate);
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
-const usdCur = 1.1;
-const transferUSD = movements.map(value => value * usdCur);
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const usdCur = 1.1;
+// const transferUSD = movements.map(value => value * usdCur);
 
-console.log(movements);
-console.log(transferUSD);
+// console.log(movements);
+// console.log(transferUSD);
 
-const newTestArray = [];
-for (const value of movements) newTestArray.push(value * usdCur);
-console.log(newTestArray);
+// const newTestArray = [];
+// for (const value of movements) newTestArray.push(value * usdCur);
+// console.log(newTestArray);
 
-movements.forEach(function (value, i) {
-  console.log(`${i + 1} of ${Math.abs(value)}`);
-});
-// console.log(james);
-console.log('=====map method below========');
-const newmove = movements.map(function (value, i) {
-  return `${i + 1} of ${Math.abs(value)}`;
-});
-console.log(newmove);
+// movements.forEach(function (value, i) {
+//   console.log(`${i + 1} of ${Math.abs(value)}`);
+// });
+// // console.log(james);
+// console.log('=====map method below========');
+// const newmove = movements.map(function (value, i) {
+//   return `${i + 1} of ${Math.abs(value)}`;
+// });
+// console.log(newmove);
+
+// const nameOf = 'Steven Thomas Williams';
+// const user = nameOf
+//   .toLowerCase()
+//   .split(' ')
+//   .map(value => value[0])
+//   .join('');
+// console.log(user);
+////////// ==========USING forEach() METHOD WITH MAP TO CREATE USERNAME ========================
+const createUserNames = function (accs) {
+  accs.forEach(function (acc) {
+    acc.username = acc.owner
+      .toLowerCase()
+      .split(' ')
+      .map(value => value[0])
+      .join('');
+  });
+};
+
+createUserNames(accounts);
+console.log(accounts);
