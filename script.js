@@ -180,7 +180,6 @@ let arr = ['a', 'b', 'r', 'b', 'g'];
 
 // createOne(julie, kate);
 
-// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 // const usdCur = 1.1;
 // const transferUSD = movements.map(value => value * usdCur);
 
@@ -221,3 +220,36 @@ const createUserNames = function (accs) {
 
 createUserNames(accounts);
 console.log(accounts);
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const newFilter = movements.filter(function (value) {
+  const age = value > 0 ? 45 : 43;
+  return age;
+});
+console.log(newFilter);
+
+const withdrawals = movements.filter(value => value < 0);
+
+console.log(withdrawals);
+
+const reduceAr = movements.reduce(function (acc, curr, i, arr) {
+  console.log(`${acc + curr} <=== ${curr},<===${i + 1}`);
+  return acc + curr;
+}, 200); // initial value
+console.log(reduceAr);
+
+let reduceB = 0; // variable with ' let '  not ' const ' as it is not changable
+for (const mov of movements) reduceB += mov;
+console.log(reduceB);
+
+const letAccCalcDisplay = function (movements) {
+  const newAccB = movements.reduce((acc, cur) => acc + cur);
+  labelBalance.textContent = `${newAccB}€`;
+};
+letAccCalcDisplay(account1.movements);
+
+const accChalMAx = movements.reduce((acc, mov) => {
+  if (acc > mov) return acc;
+  else return mov;
+}, movements[0]);
+console.log(accChalMAx);
