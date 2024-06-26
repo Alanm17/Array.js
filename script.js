@@ -253,3 +253,65 @@ const accChalMAx = movements.reduce((acc, mov) => {
   else return mov;
 }, movements[0]);
 console.log(accChalMAx);
+
+// challenge
+// calculate the dog age in human years using the followingformula = if the dog is < 2 years old,
+// humanAge = 2 * dogAge.
+// If the dog is › 2 years old,humanAge = 16 + dogAge * 4.
+
+// console.log(dogs1);
+
+const filtertheDogs = function (dogs) {
+  const humanAge = dogs.map(ages => (ages <= 2 ? 2 * ages : 16 + ages * 4));
+  const filtertheAGe = humanAge.filter(adult => adult >= 18);
+  console.log(humanAge);
+  console.log(filtertheAGe);
+  // const gatherAll =
+  //   filtertheAGe.reduce((acc, curr, i, arr) => acc + curr, 0) /
+  //   filtertheAGe.length; // here we first calculated and reduced all values and after we are assigning divide operator to get AVG of them . what reduce method is doing here is only to add values as we ordered it to do and after it did it is becoming the single value like 23+23+23 = 69 . so this ' 69 ' is the value came from reduce method and all we need to do it is to devide it to get AVG so after the order is completed which is ) bracket we can use / divide operator and put the / array.length
+  const gatherAll = filtertheAGe.reduce(
+    (acc, curr, i, arr) => acc + curr / arr.length,
+    0
+  );
+  return gatherAll;
+};
+const dogs1 = [5, 2, 4, 1, 15, 8, 3];
+const dogs2 = [16, 6, 10, 5, 6, 1, 4];
+const test1 = filtertheDogs(dogs2);
+const test2 = filtertheDogs(dogs1);
+console.log(test1, test2);
+// //
+// /
+// /
+// /
+// /
+// //
+// /
+
+// /
+// /
+// /
+// /
+
+// /
+// /
+// /
+// /
+// /
+// //
+/////////====
+// let humanAge = 0;
+// const calcAvgHumanAge = function (ages) {
+//   const humanAge = ages.map(dogage =>
+//     dogage <= 2 ? 2 * dogage : 16 + dogage * 4
+//   );
+//   // return humanAge;
+//   const adults = humanAge.filter(dogs => dogs >= 18);
+//   // return adults;
+//   const calcAvgHumanAgedDogs =
+//     adults.reduce((sum, age) => sum + age, 0) / adults.length;
+//   return calcAvgHumanAgedDogs;
+// };
+
+// console.log(calcAvgHumanAge(dogs1));
+// console.log(dogs1);
