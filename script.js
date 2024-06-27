@@ -6,35 +6,35 @@
 
 // Data
 const account1 = {
-  owner: 'Jonas Schmedtmann',
+  owner: 'Humoyun Rustamov',
   movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
   interestRate: 1.2, // %
   pin: 1111,
 };
 
 const account2 = {
-  owner: 'Jessica Davis',
+  owner: 'Muhammadjon Komilov',
   movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
   interestRate: 1.5,
   pin: 2222,
 };
 
 const account3 = {
-  owner: 'Steven Thomas Williams',
+  owner: 'Muhammadaziz Xoldarov',
   movements: [200, -200, 340, -300, -20, 50, 400, -460],
   interestRate: 0.7,
   pin: 3333,
 };
 
 const account4 = {
-  owner: 'Sarah Smith',
+  owner: 'Jahongir Pulatov',
   movements: [430, 1000, 700, 50, 90],
   interestRate: 1,
   pin: 4444,
 };
 
 const accounts = [account1, account2, account3, account4];
-
+console.log(accounts);
 // Elements
 const labelWelcome = document.querySelector('.welcome');
 const labelDate = document.querySelector('.date');
@@ -73,25 +73,25 @@ const displayMove = function (movements) {
     containerMovements.insertAdjacentHTML('afterbegin', html);
   });
 };
-displayMove(account1.movements);
+// displayMove(account1.movements);
 //chain methods
-const displaySum = function (movements) {
-  const sumIncome = movements
+const displaySum = function (account) {
+  const sumIncome = account.movements
     .filter(value => value > 0)
     .reduce((acc, curr) => acc + curr, 0);
-  const sumSpent = movements
+  const sumSpent = account.movements
     .filter(value => value < 0)
     .reduce((acc, curr) => acc + curr, 0);
-  const sumInterest = movements
+  const sumInterest = account.movements
     .filter(value => value > 0)
-    .map(value => (value * 1.2) / 100)
+    .map(value => (value * account.interestRate) / 100)
     .filter(inter => inter >= 1)
     .reduce((acc, inter) => acc + inter, 0);
   labelSumIn.textContent = `${sumIncome}€`;
   labelSumOut.textContent = `${Math.abs(sumSpent)}€`;
   labelSumInterest.textContent = `${sumInterest}€`;
 };
-displaySum(account1.movements);
+// displaySum(account1.movements);
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // .innerHTML = innerHTML is an HTML element property that has two uses for web developers: 1) You can use it to get the internal HTML content of any HTML element as an HTML string. 2) You can also use it to set or change elements' innerHTML content
@@ -237,40 +237,40 @@ const createUserNames = function (accs) {
 };
 
 createUserNames(accounts);
-console.log(accounts);
+// console.log(accounts);
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 const newFilter = movements.filter(function (value) {
   const age = value > 0 ? 45 : 43;
   return age;
 });
-console.log(newFilter);
+// console.log(newFilter);
 
 const withdrawals = movements.filter(value => value < 0);
 
-console.log(withdrawals);
+// console.log(withdrawals);
 
-const reduceAr = movements.reduce(function (acc, curr, i, arr) {
-  console.log(`${acc + curr} <=== ${curr},<===${i + 1}`);
-  return acc + curr;
-}, 200); // initial value
-console.log(reduceAr);
+// const reduceAr = movements.reduce(function (acc, curr, i, arr) {
+//   console.log(`${acc + curr} <=== ${curr},<===${i + 1}`);
+//   return acc + curr;
+// }, 200); // initial value
+// console.log(reduceAr);
 
 let reduceB = 0; // variable with ' let '  not ' const ' as it is not changable
 for (const mov of movements) reduceB += mov;
-console.log(reduceB);
+// console.log(reduceB);
 
-const letAccCalcDisplay = function (movements) {
-  const newAccB = movements.reduce((acc, cur) => acc + cur);
-  labelBalance.textContent = `${newAccB}€`;
+//for balance
+const CalcDisplayBalance = function (acc) {
+  acc.balance = acc.movements.reduce((acc, cur) => acc + cur);
+  labelBalance.textContent = `${acc.balance}€`;
 };
-letAccCalcDisplay(account1.movements);
 
 const accChalMAx = movements.reduce((acc, mov) => {
   if (acc > mov) return acc;
   else return mov;
 }, movements[0]);
-console.log(accChalMAx);
+// console.log(accChalMAx);
 
 // challenge
 // calculate the dog age in human years using the followingformula = if the dog is < 2 years old,
@@ -282,8 +282,8 @@ console.log(accChalMAx);
 const filtertheDogs = function (dogs) {
   const humanAge = dogs.map(ages => (ages <= 2 ? 2 * ages : 16 + ages * 4));
   const filtertheAGe = humanAge.filter(adult => adult >= 18);
-  console.log(humanAge);
-  console.log(filtertheAGe);
+  // console.log(humanAge);
+  // console.log(filtertheAGe);
   // const gatherAll =
   //   filtertheAGe.reduce((acc, curr, i, arr) => acc + curr, 0) /
   //   filtertheAGe.length; // here we first calculated and reduced all values and after we are assigning divide operator to get AVG of them . what reduce method is doing here is only to add values as we ordered it to do and after it did it is becoming the single value like 23+23+23 = 69 . so this ' 69 ' is the value came from reduce method and all we need to do it is to devide it to get AVG so after the order is completed which is ) bracket we can use / divide operator and put the / array.length
@@ -297,16 +297,16 @@ const dogs1 = [5, 2, 4, 1, 15, 8, 3];
 const dogs2 = [16, 6, 10, 5, 6, 1, 4];
 const test1 = filtertheDogs(dogs2);
 const test2 = filtertheDogs(dogs1);
-console.log(test1, test2);
+// console.log(test1, test2);
 // //
 const humanAgefilterInDogs = datas =>
   datas
     .map(ages => (ages <= 2 ? 2 * ages : 16 + ages * 4))
     .filter(adult => adult >= 18)
     .reduce((acc, curr, i, arr) => acc + curr / arr.length, 0);
-console.log('the is new shit==============');
+// console.log('the is new shit==============');
 const withChainMethods = humanAgefilterInDogs(dogs1);
-console.log(withChainMethods);
+// console.log(withChainMethods);
 // /
 // /
 // /
@@ -340,9 +340,68 @@ console.log(withChainMethods);
 
 // console.log(calcAvgHumanAge(dogs1));
 // console.log(dogs1);
-const usdCur = 1.1;
-const newArr = movements
-  .filter(value => value > 0)
-  .map(value => value * usdCur)
-  .reduce((acc, curr) => acc + curr, 0);
-console.log(newArr);
+// const usdCur = 1.1;
+// const newArr = movements
+//   .filter(value => value > 0)
+//   .map(value => value * usdCur)
+//   .reduce((acc, curr) => acc + curr, 0);
+// console.log(newArr);
+
+//////////
+
+// const firstWithdrawal = movements.find(value => value < 0);
+// console.log(firstWithdrawal);
+
+// const findData = accounts.find(object => object.owner === 'Jessica Davis');
+// console.log(findData);
+
+// let findDatas;
+// for (const find of accounts) {
+//   if (find.owner === 'Jessica Davis') {
+//     findDatas = find;
+//     break;
+//   }
+// }
+// console.log(findDatas);
+const updateUI = function (acc) {
+  displayMove(acc.movements);
+  // curBalance
+  CalcDisplayBalance(currentAcc);
+  //sum
+  displaySum(currentAcc);
+};
+let currentAcc;
+btnLogin.addEventListener('click', function (e) {
+  e.preventDefault();
+  currentAcc = accounts.find(acc => acc.username === inputLoginUsername.value);
+  if (currentAcc?.pin === Number(inputLoginPin.value)) {
+    // welcoming
+    labelWelcome.textContent = `Welcome back ${currentAcc.owner.split(' ')[0]}`;
+    // console.log(currentAcc);
+    // clear input fields
+    containerApp.style.opacity = 100;
+    inputLoginUsername.value = inputLoginPin.value = ''; // to clear the value input
+    inputLoginPin.blur(); // to hide selector(|) in pin
+    // movements
+    updateUI(currentAcc);
+  }
+});
+btnTransfer.addEventListener('click', function (e) {
+  e.preventDefault();
+  const amount = Number(inputTransferAmount.value);
+  const recieverAcc = accounts.find(
+    acc => acc.username === inputTransferTo.value
+  );
+  inputTransferAmount.value = inputTransferTo.value = '';
+  if (
+    amount > 0 &&
+    recieverAcc &&
+    currentAcc.balance >= amount &&
+    recieverAcc?.username !== currentAcc.username
+  ) {
+    recieverAcc.movements.push(amount);
+    currentAcc.movements.push(-amount);
+    updateUI(currentAcc);
+  }
+});
+console.log(accounts);
