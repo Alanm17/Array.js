@@ -74,6 +74,24 @@ const displayMove = function (movements) {
   });
 };
 displayMove(account1.movements);
+//chain methods
+const displaySum = function (movements) {
+  const sumIncome = movements
+    .filter(value => value > 0)
+    .reduce((acc, curr) => acc + curr, 0);
+  const sumSpent = movements
+    .filter(value => value < 0)
+    .reduce((acc, curr) => acc + curr, 0);
+  const sumInterest = movements
+    .filter(value => value > 0)
+    .map(value => (value * 1.2) / 100)
+    .filter(inter => inter >= 1)
+    .reduce((acc, inter) => acc + inter, 0);
+  labelSumIn.textContent = `${sumIncome}€`;
+  labelSumOut.textContent = `${Math.abs(sumSpent)}€`;
+  labelSumInterest.textContent = `${sumInterest}€`;
+};
+displaySum(account1.movements);
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // .innerHTML = innerHTML is an HTML element property that has two uses for web developers: 1) You can use it to get the internal HTML content of any HTML element as an HTML string. 2) You can also use it to set or change elements' innerHTML content
@@ -90,7 +108,7 @@ displayMove(account1.movements);
 
 /////////////////////////////////////////////////
 //======================== destrucitng for practice
-let arr = ['a', 'b', 'r', 'b', 'g'];
+// let arr = ['a', 'b', 'r', 'b', 'g'];
 // const [a, b, ...r] = arr;
 // console.log(a, b, r);
 // const [...jake] = [a, b, r];
@@ -281,7 +299,14 @@ const test1 = filtertheDogs(dogs2);
 const test2 = filtertheDogs(dogs1);
 console.log(test1, test2);
 // //
-// /
+const humanAgefilterInDogs = datas =>
+  datas
+    .map(ages => (ages <= 2 ? 2 * ages : 16 + ages * 4))
+    .filter(adult => adult >= 18)
+    .reduce((acc, curr, i, arr) => acc + curr / arr.length, 0);
+console.log('the is new shit==============');
+const withChainMethods = humanAgefilterInDogs(dogs1);
+console.log(withChainMethods);
 // /
 // /
 // /
@@ -315,3 +340,9 @@ console.log(test1, test2);
 
 // console.log(calcAvgHumanAge(dogs1));
 // console.log(dogs1);
+const usdCur = 1.1;
+const newArr = movements
+  .filter(value => value > 0)
+  .map(value => value * usdCur)
+  .reduce((acc, curr) => acc + curr, 0);
+console.log(newArr);
