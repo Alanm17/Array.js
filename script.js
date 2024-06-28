@@ -76,7 +76,7 @@ const displayMove = function (movements) {
 // displayMove(account1.movements);
 //chain methods
 const displaySum = function (account) {
-  const sumIncome = account.movements
+  const sumIncome = account?.movements
     .filter(value => value > 0)
     .reduce((acc, curr) => acc + curr, 0);
   const sumSpent = account.movements
@@ -405,3 +405,26 @@ btnTransfer.addEventListener('click', function (e) {
   }
 });
 console.log(accounts);
+
+btnClose.addEventListener('click', function (e) {
+  e.preventDefault();
+  console.log('delete');
+  if (
+    inputCloseUsername.value === currentAcc.username &&
+    Number(inputClosePin.value) === currentAcc.pin
+  ) {
+    const indexF = accounts.findIndex(
+      acc => acc.username === currentAcc.username
+    );
+    console.log(indexF);
+    accounts.splice(indexF, 1);
+    containerApp.style.opacity = 0;
+  } else {
+  }
+  inputCloseUsername.value = inputClosePin.value = '';
+  labelWelcome.textContent = `Login in to get started`;
+});
+const arr = ['banana'];
+const ar = [arr, 'apple', 'sider', 'jake', 'jake', 'apple'];
+let fruits = ar.findIndex(acc => acc === arr);
+fruits('banana');
