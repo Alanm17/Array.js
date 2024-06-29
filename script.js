@@ -424,7 +424,31 @@ btnClose.addEventListener('click', function (e) {
   inputCloseUsername.value = inputClosePin.value = '';
   labelWelcome.textContent = `Login in to get started`;
 });
-const arr = ['banana'];
-const ar = [arr, 'apple', 'sider', 'jake', 'jake', 'apple'];
-let fruits = ar.findIndex(acc => acc === arr);
-fruits('banana');
+// const arr = ['banana'];
+// const ar = [arr, 'apple', 'sider', 'jake', 'jake', 'apple'];
+// let fruits = ar.findIndex(acc => acc === arr);
+// fruits('banana');
+
+const array = [[[[2], 3], 4, 4], [4, 4, , 2], 3, 23, 2];
+console.log(array.flat(5));
+// flat method The Javascript arr.flat() method was introduced in ES2019. The method in JavaScript creates a new array with all sub-array elements concatenated into it recursively up to the specified depth. If no depth is provided, it defaults to 1.
+//flat
+
+// console.log(resultOfAll);
+//The flatMap() method of Array instances returns a new array formed by applying a given callback function to each element of the array, and then flattening the result by one level. It is identical to a map() followed by a flat() of depth 1 (arr.map(...args).flat()), but slightly more efficient than calling those two methods separately.
+
+//flatMap
+const newArr = accounts
+  .flatMap(acc => acc.movements)
+  .reduce((acc, curr) => acc + curr, 0);
+console.log(newArr);
+
+// sort() method
+const owners = ['Muhammadjon', 'Humoyun', 'Jahongir'];
+owners.sort();
+console.log(owners);
+// here these two values 👇 are values which should be returned they are like => a > b? '-1:1';
+movements.sort((a, b) => a - b);
+console.log(movements);
+movements.sort((a, b) => b - a);
+console.log(movements);
