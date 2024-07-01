@@ -404,6 +404,28 @@ btnTransfer.addEventListener('click', function (e) {
     updateUI(currentAcc);
   }
 });
+btnLoan.addEventListener('click', function (e) {
+  e.preventDefault();
+  const amount = Number(inputLoanAmount.value);
+
+  if (amount > 0 && currentAcc.movements.some(mov => mov >= amount * 0.1)) {
+    // Add positive movement to current account
+    currentAcc.movements.push(amount);
+    updateUI(currentAcc);
+  }
+  inputLoanAmount.value = '';
+});
+btnLoan.addEventListener('click', function (e) {
+  e.preventDefault();
+  const amount = Number(inputLoanAmount.value);
+
+  if (amount > 0 && currentAcc.movements.some(mov => mov >= amount * 0.1)) {
+    // Add positive movement to current account
+    currentAcc.movements.push(amount);
+    updateUI(currentAcc);
+  }
+  inputLoanAmount.value = '';
+});
 console.log(accounts);
 
 btnClose.addEventListener('click', function (e) {
@@ -448,7 +470,13 @@ const owners = ['Muhammadjon', 'Humoyun', 'Jahongir'];
 owners.sort();
 console.log(owners);
 // here these two values 👇 are values which should be returned they are like => a > b? '-1:1';
-movements.sort((a, b) => a - b);
-console.log(movements);
-movements.sort((a, b) => b - a);
-console.log(movements);
+const movementss = [200, 450, -400, 3000, -650, -130, 70, 1300];
+movementss.sort((a, b) => a - b);
+console.log(movementss);
+movementss.sort((a, b) => b - a);
+console.log(movementss);
+
+// movements.sort = (a, b) => {
+//   if (a < b) return 1;
+//   if (b < a) return -1;
+// };
