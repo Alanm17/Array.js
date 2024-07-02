@@ -246,7 +246,7 @@ const newFilter = movements.filter(function (value) {
 });
 // console.log(newFilter);
 
-const withdrawals = movements.filter(value => value < 0);
+const wwithdrawals = movements.filter(value => value < 0);
 
 // console.log(withdrawals);
 
@@ -505,10 +505,10 @@ function splitArray(array, size) {
 }
 
 const splitM = splitArray(m, 23);
-console.log(splitM);
+// console.log(splitM);
 // const mm = Array.from({ length: 100 }, (_, i) => i + 1);
 // m.split(23);
-console.log(m);
+// console.log(m);
 
 labelBalance.addEventListener('click', function () {
   const movementsUI = Array.from(
@@ -517,3 +517,54 @@ labelBalance.addEventListener('click', function () {
   );
   console.log(movementsUI);
 });
+// practices to review all array methods:
+//1.
+const DepositSum = accounts
+  .flatMap(acc => acc.movements)
+  .filter(value => value > 0)
+  .reduce((acc, curr) => acc + curr, 0);
+console.log(DepositSum);
+//2. how to know how many deposits over 1000
+const numDepositOv1000 = accounts
+  .flatMap(acc => acc.movements)
+  .filter(value => value >= 1000).length;
+console.log(numDepositOv1000);
+// 2. how to know how many deposits over 1000
+const numbDepositOv1000 = accounts
+  .flatMap(acc => acc.movements)
+  .reduce((acc, cur) => (cur >= 1000 ? ++acc : acc), 0);
+console.log(numbDepositOv1000);
+
+//3. how to use accumilator reduce method to create an object and make two properties with deposits and withdrawals in the account
+
+const { deposits, withdrawals } = accounts
+  .flatMap(acc => acc.movements)
+  .reduce(
+    (acc, curr) => {
+      // acc[curr > 0 ? 'deposits' : 'withdrawals'] += curr;
+      curr > 0 ? (acc.deposits += curr) : (acc.withdrawals += curr);
+      return acc;
+    },
+    { deposits: 0, withdrawals: 0 } // does not work without manually creating these =
+    // { deposits: 0, withdrawals: 0 }
+  );
+console.log(deposits, withdrawals);
+
+//4. to convert some letters to uppercase : jame has big airplanes  -> Jame Has Big Airplanes
+
+const convertLetters = function (titles) {
+  const capitilize = str => str[0].toUpperCase() + str.slice(1);
+  const exeptions = ['a', 'an', 'and', 'the', 'but', 'with', 'or', 'on', 'in'];
+  const titlesCapitil = titles
+    .toLowerCase()
+    .split(' ')
+    .map(fWord => (exeptions.includes(fWord) ? fWord : capitilize(fWord)))
+    .join(' ');
+
+  return capitilize(titlesCapitil);
+};
+console.log(convertLetters('A jame has big airplanes with a huge cock'));
+// console.log(convertLetters(''));
+// console.log(convertLetters(''));
+// console.log(convertLetters(''));
+// console.log(convertLetters(''));
