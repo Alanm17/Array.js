@@ -34,7 +34,7 @@ const account4 = {
 };
 
 const accounts = [account1, account2, account3, account4];
-console.log(accounts);
+// console.log(accounts);
 // Elements
 const labelWelcome = document.querySelector('.welcome');
 const labelDate = document.querySelector('.date');
@@ -426,7 +426,7 @@ btnLoan.addEventListener('click', function (e) {
   }
   inputLoanAmount.value = '';
 });
-console.log(accounts);
+// console.log(accounts);
 
 btnClose.addEventListener('click', function (e) {
   e.preventDefault();
@@ -452,7 +452,7 @@ btnClose.addEventListener('click', function (e) {
 // fruits('banana');
 
 const array = [[[[2], 3], 4, 4], [4, 4, , 2], 3, 23, 2];
-console.log(array.flat(5));
+// console.log(array.flat(5));
 // flat method The Javascript arr.flat() method was introduced in ES2019. The method in JavaScript creates a new array with all sub-array elements concatenated into it recursively up to the specified depth. If no depth is provided, it defaults to 1.
 //flat
 
@@ -463,20 +463,57 @@ console.log(array.flat(5));
 const newArr = accounts
   .flatMap(acc => acc.movements)
   .reduce((acc, curr) => acc + curr, 0);
-console.log(newArr);
+// console.log(newArr);
 
 // sort() method
 const owners = ['Muhammadjon', 'Humoyun', 'Jahongir'];
 owners.sort();
-console.log(owners);
+// console.log(owners);
 // here these two values 👇 are values which should be returned they are like => a > b? '-1:1';
 const movementss = [200, 450, -400, 3000, -650, -130, 70, 1300];
 movementss.sort((a, b) => a - b);
-console.log(movementss);
+// console.log(movementss);
 movementss.sort((a, b) => b - a);
-console.log(movementss);
+// console.log(movementss);
 
 // movements.sort = (a, b) => {
 //   if (a < b) return 1;
 //   if (b < a) return -1;
 // };
+
+// fill method () similar to slice but mutates the original array
+const arr = new Array(7);
+
+console.log(arr.fill(4, 3, 6)); // output //empty × 3, 4, 4, 4, empty]
+console.log(arr.fill(1));
+console.log(arr);
+
+const y = Array.from({ length: 7 }, () => 1);
+console.log(y);
+// looping like map() method
+const z = Array.from({ length: 7 }, (_, i) => i + 1);
+console.log(z);
+
+const m = Array.from({ length: 100 }, (_, i) => i + 1);
+
+function splitArray(array, size) {
+  const result = [];
+  for (let i = 0; i < array.length; i += size) {
+    result.push(array.slice(i, i + size));
+  }
+  return result;
+}
+
+const splitM = splitArray(m, 23);
+console.log(splitM);
+// const mm = Array.from({ length: 100 }, (_, i) => i + 1);
+// m.split(23);
+console.log(m);
+
+labelBalance.addEventListener('click', function () {
+  const movementsUI = Array.from(
+    document.querySelectorAll('.movements__value'),
+    el => Number(el.textContent.replace('€', ''))
+  );
+  console.log(movementsUI);
+});
