@@ -583,6 +583,16 @@ console.log(dogs);
 
 const g = dogs.find(value => value.owners.includes('Sarah'));
 console.log(g);
+let newArray;
+if (g) {
+  newArray =
+    g.recommendedFood > g.recommendedFood
+      ? g.recommendedFood * 0.9
+      : g.recommendedFood * 1.1;
+  // return newArray;
+}
+
+console.log(newArray);
 
 // const findData = accounts.find(object => object.owner === 'Jessica Davis');
 // console.log(findData);
