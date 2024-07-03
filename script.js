@@ -568,3 +568,21 @@ console.log(convertLetters('A jame has big airplanes with a huge cock'));
 // console.log(convertLetters(''));
 // console.log(convertLetters(''));
 // console.log(convertLetters(''));
+
+// challenge
+const dogs = [
+  { weight: 22, curFood: 250, owners: ['Alice', 'Bob'] },
+  { weight: 8, curFood: 200, owners: ['Matilda'] },
+  { weight: 13, curFood: 275, owners: ['Sarah', 'John'] },
+  { weight: 32, curFood: 340, owners: ['Michael'] },
+];
+dogs.forEach(value => {
+  value.recommendedFood = value.weight ** 0.75 * 28;
+});
+console.log(dogs);
+
+const g = dogs.find(value => value.owners.includes('Sarah'));
+console.log(g);
+
+// const findData = accounts.find(object => object.owner === 'Jessica Davis');
+// console.log(findData);
