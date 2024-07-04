@@ -563,7 +563,7 @@ const convertLetters = function (titles) {
 
   return capitilize(titlesCapitil);
 };
-console.log(convertLetters('A jame has big airplanes with a huge cock'));
+console.log(convertLetters('A jame has big airplanes'));
 // console.log(convertLetters(''));
 // console.log(convertLetters(''));
 // console.log(convertLetters(''));
@@ -576,23 +576,73 @@ const dogs = [
   { weight: 13, curFood: 275, owners: ['Sarah', 'John'] },
   { weight: 32, curFood: 340, owners: ['Michael'] },
 ];
+//1.
 dogs.forEach(value => {
-  value.recommendedFood = value.weight ** 0.75 * 28;
+  value.recommendedFood = Math.trunc(value.weight ** 0.75 * 28);
 });
 console.log(dogs);
-
-const g = dogs.find(value => value.owners.includes('Sarah'));
-console.log(g);
+//2
 let newArray;
-if (g) {
-  newArray =
-    g.recommendedFood > g.recommendedFood
-      ? g.recommendedFood * 0.9
-      : g.recommendedFood * 1.1;
-  // return newArray;
+const g = dogs.find(value => value.owners.includes('Sarah', 'John'));
+if (
+  g?.curFood > g.recommendedFood * 0.9 &&
+  g?.curFood < g.recommendedFood * 1.1
+) {
+  newArray = ` Sarah's dog is eating as recommended ${
+    g.recommendedFood * 0.9
+  } and ${g.recommendedFood * 1.1}`;
 }
-
+// return newArray;
+else {
+  newArray = `Sarah's dog is not eating as recommended`;
+}
 console.log(newArray);
 
-// const findData = accounts.find(object => object.owner === 'Jessica Davis');
-// console.log(findData);
+const ownersMuch = [];
+const ownersLess = [];
+// console.log(ownersMuch);
+const ownersEatTooMucch = dogs
+  .filter(value => value.curFood > value.recommendedFood)
+  .map(dogs => ownersMuch.push(...dogs.owners));
+const ownersEatToooLittle = dogs
+  .filter(value => value.curFood < value.recommendedFood)
+  .map(dogs => ownersLess.push(...dogs.owners));
+//3
+const ownersEatTooMuch = dogs
+  .filter(value => value.curFood > value.recommendedFood)
+  .flatMap(dogs => dogs.owners);
+const ownersEatTooLittle = dogs
+  .filter(value => value.curFood < value.recommendedFood)
+  .flatMap(dogs => dogs.owners); // with flatMap we can take  two different arrays inside one variable into one array and make them together like  [['asas'],['asas']] <- before = after-> ['asas','asas']==================================================>flatMap
+
+console.log(ownersEatTooLittle);
+console.log(ownersEatTooMuch);
+
+//4
+console.log(
+  `${ownersMuch.join(' and ')}'s dogs eat too much while ${ownersLess.join(
+    ' and '
+  )}'s dog's eat too little`
+);
+
+//5
+const trueAmount = dogs.some(dog => dog.curFood === dog.recommendedFood);
+console.log(trueAmount); //false
+//6
+const okeyFoodCalc = dogs =>
+  dogs.curFood > dogs.recommendedFood * 0.9 &&
+  dogs.curFood < dogs.recommendedFood * 1.1;
+//array function is recommended to use as callback yoki' return 'bilan ishlatish kerak yoksa ishlamedi .
+
+//7
+const anyokeyAmount = dogs.some(dogs => okeyFoodCalc);
+console.log(anyokeyAmount); //true
+const okeyAmountt = dogs.filter(okeyFoodCalc); // filter method array function bilan ishledi . it works with array functions well or do not forget to assign 'return '
+console.log(okeyAmountt);
+const dogsSorted = dogs
+  .slice()
+  .sort((a, b) => a.recommendedFood - b.recommendedFood);
+
+console.log(dogsSorted);
+console.log(dogs);
+// movementss.sort((a, b) => a - b);
